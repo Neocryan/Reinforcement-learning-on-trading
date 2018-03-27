@@ -2,7 +2,7 @@ from agent.agent import Agent
 from functions import *
 import sys
 
-commission_rate = 0.25
+commission_rate = 0.0025
 if len(sys.argv) != 4:
 	print "Usage: python train.py [stock] [window] [episodes]"
 	exit()
