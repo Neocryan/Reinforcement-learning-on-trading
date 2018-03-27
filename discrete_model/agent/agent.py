@@ -17,7 +17,7 @@ class Agent:
 		self.model_name = model_name
 		self.is_eval = is_eval
 
-        	self.gamma = 0.95
+        	self.gamma = 0.7
         	self.epsilon_min = 0.001
         	self.epsilon = 0.005		
         	self.epsilon_decay = 0.99
@@ -29,13 +29,14 @@ class Agent:
         	model.add(Dense(units=128, input_dim=self.state_size, activation="relu"))
         	model.add(Dense(units=64, activation="relu"))
         	model.add(Dense(units=32, activation="relu"))
+        	model.add(Dense(units=16, activation="relu"))
         	model.add(Dense(self.action_size, activation="linear"))
         	model.compile(loss="mse", optimizer=Adam(lr=0.001))
 
 		return model
 
 	def act(self, state):
-		if not self.is_eval and np.random.rand() <= self.epsilon:
+		if self.is_eval and np.random.rand() <= self.epsilon:
 			return random.randrange(self.action_size)
 
 		options = self.model.predict(state)
