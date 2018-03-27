@@ -29,7 +29,6 @@ class Agent:
         	model.add(Dense(units=128, input_dim=self.state_size, activation="relu"))
         	model.add(Dense(units=64, activation="relu"))
         	model.add(Dense(units=32, activation="relu"))
-        	model.add(Dense(units=16, activation="relu"))
         	model.add(Dense(self.action_size, activation="linear"))
         	model.compile(loss="mse", optimizer=Adam(lr=0.001))
 
