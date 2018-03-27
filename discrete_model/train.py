@@ -3,7 +3,7 @@ from functions import *
 import sys
 import os
 try:
-	commission_rate = 0.25
+	commission_rate = 0.0025
 	if len(sys.argv) != 4:
 		print "Usage: python train.py [stock] [window] [episodes]"
 		exit()
@@ -43,6 +43,7 @@ try:
 				print "Sell: " + formatPrice(data[t]) + " | Profit: " + formatPrice(data[t] - bought_price - commission)
 				commission = 0
 
+			print("Total Profit: " + formatPrice(total_profit)) # get total profit at each step. 
 			done = True if t == l - 1 else False
 			agent.memory.append((state, action, reward, next_state, done))
 			state = next_state
