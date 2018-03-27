@@ -10,7 +10,7 @@ def getStockDataVec(key):
 	vec = []
 	lines = open("data/" + key + ".csv", "r").read().splitlines()
 
-	for line in lines[1:]:
+	for line in lines[1:2000]:
 		vec.append(float(line.split(",")[4]))
 
 	return vec
