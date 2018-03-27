@@ -17,20 +17,21 @@ class Agent:
 		self.model_name = model_name
 		self.is_eval = is_eval
 
-		self.gamma = 0.95
-		self.epsilon = 1.0
-		self.epsilon_min = 0.01
-		self.epsilon_decay = 0.995
+        	self.gamma = 0.7
+        	self.epsilon_min = 0.001
+        	self.epsilon = 0.005		
+        	self.epsilon_decay = 0.99
 
 		self.model = load_model("models/" + model_name) if is_eval else self._model()
 
 	def _model(self):
-		model = Sequential()
-		model.add(Dense(units=64, input_dim=self.state_size, activation="relu"))
-		model.add(Dense(units=32, activation="relu"))
-		model.add(Dense(units=8, activation="relu"))
-		model.add(Dense(self.action_size, activation="linear"))
-		model.compile(loss="mse", optimizer=Adam(lr=0.001))
+        	model = Sequential()
+        	model.add(Dense(units=128, input_dim=self.state_size, activation="relu"))
+        	model.add(Dense(units=64, activation="relu"))
+        	model.add(Dense(units=32, activation="relu"))
+        	model.add(Dense(units=16, activation="relu"))
+        	model.add(Dense(self.action_size, activation="linear"))
+        	model.compile(loss="mse", optimizer=Adam(lr=0.001))
 
 		return model
 
