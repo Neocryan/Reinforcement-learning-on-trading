@@ -17,7 +17,7 @@ class Agent:
 		self.model_name = model_name
 		self.is_eval = is_eval
 
-        	self.gamma = 0.7
+        	self.gamma = 0.95
         	self.epsilon_min = 0.001
         	self.epsilon = 0.005		
         	self.epsilon_decay = 0.99
