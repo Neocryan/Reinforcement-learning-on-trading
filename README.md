@@ -1,3 +1,5 @@
-# Reinforcement-learning-on-trading
+## Discrete Model for single asset trading
 
-The codes will be online by the end of March
+* usage: python train.py [data] [window] [episodes] [draw]
+* eg:    python train.py BTC 50 100 1
+* environment: python 2.7
