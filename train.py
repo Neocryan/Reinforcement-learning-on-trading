@@ -79,7 +79,9 @@ try:
                             log.write(out)
                 
                 
-                print "Sell: " + formatPrice(data[t]) + " | Profit: " + formatPrice(data[t] - bought_price - bought_comm)
+                print "Sell: " + formatPrice(data[t]) + " | Profit: " + \
+                      formatPrice(data[t] - bought_price - bought_comm) + \
+                      " | Total Profit: " + formatPrice(total_profit)
 
             elif action == 0:
                 hold.append(len(agent.inventory))
@@ -90,7 +92,7 @@ try:
                 with open('hold.txt', 'w') as ho:
                     ho.write(str(hold))
             
-            print("Total Profit: " + formatPrice(total_profit)) # get total profit at each step. 
+             # get total profit at each step.
             done = True if t == l - 1 else False
             agent.memory.append((state, action, reward, next_state, done))
             state = next_state
