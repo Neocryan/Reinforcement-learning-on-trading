@@ -89,6 +89,8 @@ try:
                     pass
                 with open('hold.txt', 'w') as ho:
                     ho.write(str(hold))
+            
+            print("Total Profit: " + formatPrice(total_profit)) # get total profit at each step. 
             done = True if t == l - 1 else False
             agent.memory.append((state, action, reward, next_state, done))
             state = next_state
