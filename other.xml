@@ -1,0 +1,34 @@
+<application>
+  <component name="PyTestFrameworkService">
+    <option name="SDK_TO_PYTEST">
+      <map>
+        <entry key="C:\Users\txy9r\Desktop\AML\proj\discrete_model\venv1\Scripts\python.exe" value="false" />
+        <entry key="C:\Users\txy9r\Desktop\AML\proj\q-trader-master\venv\Scripts\python.exe" value="false" />
+        <entry key="C:\Users\txy9r\Desktop\AML\proj\venv\Scripts\python.exe" value="false" />
+        <entry key="C:\env\Anaconda3\envs\aml2_7\python.exe" value="false" />
+        <entry key="C:\env\Anaconda3\envs\foo\python.exe" value="false" />
+        <entry key="C:\env\Anaconda3\python.exe" value="true" />
+      </map>
+    </option>
+    <option name="SDK_TO_NOSETEST">
+      <map>
+        <entry key="C:\Users\txy9r\Desktop\AML\proj\discrete_model\venv1\Scripts\python.exe" value="false" />
+        <entry key="C:\Users\txy9r\Desktop\AML\proj\q-trader-master\venv\Scripts\python.exe" value="false" />
+        <entry key="C:\Users\txy9r\Desktop\AML\proj\venv\Scripts\python.exe" value="false" />
+        <entry key="C:\env\Anaconda3\envs\aml2_7\python.exe" value="false" />
+        <entry key="C:\env\Anaconda3\envs\foo\python.exe" value="false" />
+        <entry key="C:\env\Anaconda3\python.exe" value="true" />
+      </map>
+    </option>
+    <option name="SDK_TO_TRIALTEST">
+      <map>
+        <entry key="C:\Users\txy9r\Desktop\AML\proj\discrete_model\venv1\Scripts\python.exe" value="false" />
+        <entry key="C:\Users\txy9r\Desktop\AML\proj\q-trader-master\venv\Scripts\python.exe" value="false" />
+        <entry key="C:\Users\txy9r\Desktop\AML\proj\venv\Scripts\python.exe" value="false" />
+        <entry key="C:\env\Anaconda3\envs\aml2_7\python.exe" value="false" />
+        <entry key="C:\env\Anaconda3\envs\foo\python.exe" value="false" />
+        <entry key="C:\env\Anaconda3\python.exe" value="false" />
+      </map>
+    </option>
+  </component>
+</application>
