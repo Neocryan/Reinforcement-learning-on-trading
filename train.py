@@ -1,7 +1,5 @@
 from agent.agent import Agent
 from functions import *
-import matplotlib.pyplot as plt
-import matplotlib.animation as animation
 import sys
 import os
 from subprocess import Popen
