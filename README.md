@@ -1,3 +1,4 @@
-# Reinforcement-learning-on-trading
+# DQN on coin trading -- discrete action space
 
-The codes will be online by the end of March
+## Usage:
+python train.py BTC 50 100 train 0
