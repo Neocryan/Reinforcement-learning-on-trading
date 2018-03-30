@@ -3,7 +3,7 @@ from functions import *
 import sys
 import os
 from subprocess import Popen
-
+from collections import deque
 dd = 0  # this is for start the plotting shell
 try:
     commission_rate = 0.0025
@@ -40,7 +40,9 @@ try:
         agent.inventory = []
         commission_history = []
         c = []
-        hold = []
+        total_hist = []
+        hold = deque(maxlen=200)
+        price = deque(maxlen=200)
 
         for t in xrange(data_length):
 
@@ -52,7 +54,7 @@ try:
 
             if t == data_length - 1:
                 reward += np.sum(data[t] - (np.array(agent.inventory) + np.array(commission_history)))
-
+                total_profit += reward
             if action == 1:  # buy
                 agent.inventory.append(data[t])
                 if len(agent.inventory) > 1000:
@@ -60,36 +62,39 @@ try:
 
                 commission_history.append(data[t] * commission_rate)
                 hold.append(len(agent.inventory))
+                price.append(data[t])
                 try:
-                    hold = hold[-50:]
+                    out = str(list(hold)) + '//' + str(list(price))
+                    with open('hold.txt', 'w') as ho:
+                        ho.write(str(out))
                 except:
-                    pass
-                with open('hold.txt', 'w') as ho:
-                    ho.write(str(hold))
+                    print('record error on host.txt')
                 print "Buy: " + formatPrice(data[t])
 
             elif action == 2 and len(agent.inventory) > 0:  # sell
                 bought_price = agent.inventory.pop(0)
                 bought_comm = commission_history.pop(0)
                 hold.append(len(agent.inventory))
+                price.append(data[t])
                 try:
-                    hold = hold[-50:]
+                    out = str(list(hold)) + '//' + str(list(price))
+                    with open('hold.txt', 'w') as ho:
+                        ho.write(str(out))
                 except:
-                    pass
-                with open('hold.txt', 'w') as ho:
-                    ho.write(str(hold))
+                    print('record error on host.txt')
                 print "Buy: " + formatPrice(data[t])
                 # reward = max(data[t] - bought_price -bought_comm, 0)
                 reward += data[t] - bought_price - bought_comm
                 total_profit += data[t] - bought_price - bought_comm
                 c.append(data[t] - bought_price - bought_comm)
+                total_hist.append(total_profit)
                 if draw:
                     if dd == 0:
                         dd += 1
                         Popen('python viz.py', shell=True)
 
-                    if tt % 10 == 0:
-                        out = str(list(c)) + '//' + str(hold)
+                    if tt % 1 == 0:
+                        out = str(list(c)) + '//' +str(list(total_hist))
                         with open('log.txt', 'w') as log:
                             log.write(out)
 
@@ -98,14 +103,15 @@ try:
                       " | Total Profit: " + formatPrice(total_profit)
 
             elif action == 0:
-                reward -= 0.5
+                reward -= 1
                 hold.append(len(agent.inventory))
+                price.append(data[t])
                 try:
-                    hold = hold[-50:]
+                    out = str(list(hold)) + '//' + str(list(price))
+                    with open('hold.txt', 'w') as ho:
+                        ho.write(str(out))
                 except:
-                    pass
-                with open('hold.txt', 'w') as ho:
-                    ho.write(str(hold))
+                    print('record error on host.txt')
 
             # get total profit at each step.
 

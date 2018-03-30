@@ -16,7 +16,6 @@ class Agent:
         self.inventory = []
         self.model_name = model_name
         self.is_eval = is_eval
-
         self.gamma = 0.95
         self.epsilon = 1.0
         self.epsilon_min = 0.01
@@ -31,7 +30,6 @@ class Agent:
         model.add(Dense(units=8, activation="relu"))
         model.add(Dense(self.action_size, activation="linear"))
         model.compile(loss="mse", optimizer=Adam(lr=0.001))
-
         return model
 
     def act(self, state):
